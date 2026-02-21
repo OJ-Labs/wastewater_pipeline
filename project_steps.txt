@@ -1,0 +1,5 @@
+Day1
+created project folder
+downloaded dependencies
+configured database
+pushed to githu
