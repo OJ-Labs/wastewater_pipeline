@@ -1,0 +1,615 @@
+/* Reset some defaults */
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+   font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+.app-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navbar = 15% */
+.topnav {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    background-color: #03120E;
+    padding: 0 20px;
+    flex: 0 0 12%;
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Links */
+.topnav a {
+    color: #e2e8f0;
+    text-decoration: none;
+    padding: 10px 15px;
+    margin-right: 10px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+/* Hover effect */
+.topnav a:hover {
+    color: #ffffff;
+}
+
+/* Active link */
+.topnav a.active {
+    color: white;
+}
+
+
+/* Open button */
+.openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: white;
+    padding: 0 20px;
+}
+.topnav .right {
+    margin-left: auto;
+}
+
+.topnav .search-container{
+    margin-left: auto;
+}
+
+
+/* Sidebar inside layout (NOT fixed) */
+.sidebar {
+    width: 250px;
+    background-color: #0D2149;
+    transition: 0.3s ease;
+    padding-bottom: 20px;
+    overflow: hidden;
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+
+}
+
+
+/* Hide text when collapsed */
+.sidebar.collapsed a {
+    white-space: nowrap;
+    overflow: hidden;
+}
+.sidebar.collapsed {
+    width: 0px;
+}
+
+/* Optional: keep spacing nice */
+.sidebar.collapsed a::before {
+    font-size: 16px;
+}
+
+
+/* Links */
+.sidebar a {
+    display: block;
+    padding: 12px 20px;
+    font-size: 16px;              /* reduced from 25px */
+    color: #cbd5e1;
+    text-decoration: none;
+    border-radius: 6px;
+    margin: 5px 10px;
+    transition: all 0.2s ease;
+}
+
+/* Hover */
+.sidebar a:hover {
+    color: #ffffff;
+    font-size: larger;
+}
+
+/* Active link (optional) */
+.sidebar a.active {
+    color: #ff9f1c;
+}
+
+.closebtn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+    margin: 10px;
+    display: none;
+}
+
+
+
+
+.topnav input[type=text] {
+  float: right;
+  padding: 6px;
+  border: none;
+  margin-top: 8px;
+  margin-right: 16px;
+  font-size: 17px;
+  border-radius: 25;
+}
+
+/* Body area (sidebar + main) */
+.body-area {
+    flex: 1;
+    display: flex;
+}
+
+/* Main content fills rest */
+.content {
+    flex: 1;
+    padding: 20px;
+}
+.nav-links {
+    display: flex;
+}
+
+/*   MOBILE (<= 768px) */
+@media (max-width: 768px) {
+
+    /* Navbar adjustments */
+    .topnav {
+        flex: 0 0 auto;              /* stop % height issues */
+        height: 60px;
+        padding: 0 10px;
+    }
+   .closebtn{
+    display: flex;
+   }
+    /* Hide center links (they cause crumpling) */
+    /* .topnav a {
+        display: none;
+    } */
+
+    /* Keep only important items */
+    .topnav .right {
+        display: block;
+        margin-left: auto;
+    }
+
+    /* Sidebar becomes overlay */
+    .sidebar {
+        position: fixed;
+        left: -250px;
+        top: 0;
+        height: 100%;
+        z-index: 1000;
+        transition: 0.3s;
+        
+    }
+
+    .sidebar.open {
+        left: 0;
+    }
+
+    /* Body becomes full width */
+    .body-area {
+        flex-direction: column;
+    }
+
+    /* Content spacing */
+    .content {
+        padding: 15px;
+    }
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: #03120E;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+    
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    z-index: 900;
+}
+
+.overlay.active {
+    display: block;
+}
+
+
+
+/* Container spacing */
+.content {
+    padding: 30px;
+}
+
+/* Blog card */
+/* .post-card {
+    background: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease;
+} */
+
+/* Post card container */
+.post-card {
+    background-color: #f9fafb;   /* light background */
+    border: 1px solid #e5e7eb;   /* subtle border */
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    max-width: 800px;
+}
+
+/* Post title */
+.post-card .post-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #0f172a;
+}
+
+/* Post illustration */
+.post-card .post-image {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 15px;
+}
+
+/* Post meta info */
+.post-card .post-meta {
+    font-size: 0.9rem;
+    color: #64748b;
+    margin-bottom: 15px;
+}
+
+/* Post body */
+.post-card .post-body {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #1e293b;
+}
+
+/* Optional: style headings inside content_html */
+.post-card .post-body h1,
+.post-card .post-body h2,
+.post-card .post-body h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #0f172a;
+}
+
+/* Optional: style links inside content_html */
+.post-card .post-body a {
+    color: #3b82f6;
+    text-decoration: underline;
+}
+
+.post-card .post-body a:hover {
+    color: #1d4ed8;
+}
+
+
+
+
+/* Hover effect */
+.post-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Image */
+.post-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Content */
+.post-content {
+    padding: 20px;
+}
+
+/* Title */
+.post-title {
+    margin: 0;
+    font-size: 22px;
+    color: #0f172a;
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Meta info */
+.post-meta {
+    font-size: 13px;
+    color: #64748b;
+    margin: 8px 0 15px;
+}
+
+/* Excerpt */
+.post-excerpt {
+    color: #334155;
+    line-height: 1.6;
+    text-decoration: none;
+}
+
+
+.pagination {
+    margin-top: 20px;
+    text-align: center;
+    color: #0f172a;
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.pagination a {
+    margin: 0 5px;
+    padding: 6px 10px;
+    background: #1e293b;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+
+
+}
+
+
+.pagination span {
+    margin: 0 10px;
+}
+
+.post-detail {
+    max-width: 800px;
+    margin: auto;
+}
+
+.detail-image {
+    width: 100%;
+    margin: 20px 0;
+    border-radius: 10px;
+}
+
+.post-body {
+    line-height: 1.8;
+    color: #1e293b;
+}
+
+
+
+.hero {
+    background: #0D2149;
+    color: white;
+    padding: 40px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+
+
+.topic-pill {
+    display: inline-block;
+    background: #e2e8f0;
+    padding: 6px 12px;
+    border-radius: 20px;
+    margin: 5px;
+    text-decoration: none;
+}
+
+
+
+.grid .post-card {
+    background: #f8fafc;
+    border: 2px solid #3b82f6;
+}
+
+a{
+    text-decoration: none;
+    color: #3b82f6;
+}
+
+
+a:link{
+    color: #3b82f6;
+}
+a:visited{
+    color: #f07167;
+}
+a:hover{
+    font-size: larger;
+}
+
+.post-excerpt{
+    color: #3b82f6;
+}
+
+.post-excerpt:visited{
+    color: #f07167;
+
+}
+
+/* Bottom navbar */
+.bottom-nav {
+    position: fixed;
+    bottom: -70px; /* hidden initially */
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: #03120E;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    transition: bottom 0.3s ease;
+    z-index: 1000;
+}
+
+/* Show navbar */
+.bottom-nav.show {
+    bottom: 0;
+}
+
+/* Icons */
+.bottom-nav a {
+    color: #e2e8f0;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+/* Active / hover */
+.bottom-nav a:hover {
+    color: #3b82f6;
+}
+
+
+
+.footer {
+    background: #03120E;
+    color: #e2e8f0;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    height: fit-content;
+}
+
+.footer a {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer a:hover {
+    color: #3b82f6;
+}
+
+
+
+/* Container */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Button */
+.dropbtn {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    color: #e2e8f0;
+    text-decoration: none;
+    padding: 10px 15px;
+    margin-right: 10px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    background-color: #03120E;
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+
+}
+
+.dropbtn:hover {
+    font-size: larger;
+}
+
+/* Dropdown panel */
+.dropdown-content {
+    position: absolute;
+    right: 0;
+    top: 110%;
+    background-color: #0f172a;
+    min-width: 260px;
+    border-radius: 10px;
+    padding: 20px;
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    z-index: 1000;
+}
+
+/* Show dropdown */
+.dropdown.active .dropdown-content {
+    display: flex;
+}
+
+/* Form headings */
+.dropdown-content h3 {
+    margin: 0 0 10px;
+    color: #e2e8f0;
+}
+
+/* Inputs */
+.dropdown-content input {
+    width: fit-content;
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    background: none;
+    color: #e2e8f0;
+    font-size: 14px;
+    display: flex;
+}
+
+.dropdown-content input::placeholder {
+    color: #94a3b8;
+}
+
+/* Buttons */
+.dropdown-content button {
+    color: white;
+    background-color: #0f172a;
+    padding: 10px;
+    border: none;
+    /* border-radius: 6px; */
+    cursor: pointer;
+    /* transition: te */
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+.dropdown-content button:hover {font-size: larger;}
+
+/* Switch link */
+.switch-link {
+    font-size: 13px;
+    color: #60a5fa;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.switch-link:hover {
+    text-decoration: none;
+}

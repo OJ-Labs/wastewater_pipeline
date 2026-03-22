@@ -1,0 +1,74 @@
+{% extends 'core/base.html' %}
+{% block content %}
+
+<div class="hero">
+    <h1>Wastewater Insights</h1>
+    <p>Latest analysis, reports, and summaries on water systems.</p>
+</div>
+
+<!-- Featured -->
+{% if featured_posts %}
+<h2>Featured</h2>
+<div class="grid">
+    {% for post in featured_posts %}
+        <a href="{{ post.get_absolute_url }}" class="post-card-link">
+            <div class="post-card">
+                <h3>{{ post.title }}</h3>
+            </div>
+        </a>
+    {% endfor %}
+</div>
+{% endif %}
+
+<!-- Main Feed -->
+<h2>Latest Posts</h2>
+
+<div class="content">
+{% for post in page_obj %}
+    <a href="{{ post.get_absolute_url }}" class="post-card-link">
+        <div class="post-card">
+            
+            {% if post.illustration %}
+                <img src="{{ post.illustration.url }}" class="post-image">
+            {% endif %}
+
+            <div class="post-content">
+                <h2 class="post-title">{{ post.title }}</h2>
+
+                <p class="post-meta"> 
+                    {{ post.author.username }} • 
+                    {{ post.created_at|date:"M d, Y" }} • 
+                    {{ post.topic.name }}
+                </p>
+
+                <p class="post-excerpt">
+                    {{ post.content_html|truncatewords:25 }}
+                </p>
+
+            </div>
+
+        </div>
+    </a>
+{% endfor %}
+</div>
+
+<!-- Pagination -->
+<div class="pagination">
+
+    {% if page_obj.has_previous %}
+        <a href="?page=1">« First</a>
+        <a href="?page={{ page_obj.previous_page_number }}">‹ Prev</a>
+    {% endif %}
+
+    <span>
+        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+    </span>
+
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">Next ›</a>
+        <a href="?page={{ page_obj.paginator.num_pages }}">Last »</a>
+    {% endif %}
+
+</div>
+
+{% endblock %}

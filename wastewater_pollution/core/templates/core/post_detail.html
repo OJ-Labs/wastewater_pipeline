@@ -1,0 +1,32 @@
+
+{% extends 'core/base.html' %}
+{% block content %}
+
+
+<div class="post-card">
+    <h2 class="post-title">{{ post.title }}</h2>
+
+        {% if post.illustration %}
+            <img src="{{ post.illustration.url }}" class="post-image">
+        {% endif %}
+
+        <div class="post-content">
+            
+
+            <p class="post-meta">
+                {{ post.author.username }} • 
+                {{ post.created_at|date:"M d, Y" }} • 
+                {{ post.topic.name }}
+            </p>
+        </div>
+
+        <p class="post-body">
+                {{ post.content_html|safe}}
+        </p>
+
+    </div>
+
+{% endblock %}
+
+
+

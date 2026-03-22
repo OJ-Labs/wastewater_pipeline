@@ -1,0 +1,32 @@
+
+{% extends 'core/base.html' %}
+{% block content %}
+
+<h1>{{ current_topic.name }}</h1>
+
+{% if posts %}
+    {% for post in posts %}
+        <a href="{{ post.get_absolute_url }}" class="post-card-link">
+            <div class="post-card">
+                <h2>{{ post.title }}</h2>
+
+                {% if post.illustration %}
+                    <img src="{{ post.illustration.url }}" class="post-image">
+                {% endif %}
+
+                <p class="meta">
+                    By {{ post.author.username }} • 
+                    {{ post.created_at|date:"M d, Y" }}
+                </p>
+
+                <p class="post-excerpt">
+                    {{ post.content_html|truncatewords:25 }}
+                </p>
+            </div>
+        </a>
+    {% endfor %}
+{% else %}
+    <p>No posts found for this topic.</p>
+{% endif %}
+
+{% endblock %}
