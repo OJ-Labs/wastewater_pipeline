@@ -8,7 +8,7 @@ from django.urls import reverse
 class Topic(models.Model):
     name = models.CharField(max_length=100, unique=True)
     feeds=models.CharField(default='https://feeds.bbci.co.uk/news/rss.xml')
-    keywords = models.TextField(null=True)  # comma-separated for now
+    keywords = models.TextField(null=True)
     slug=models.SlugField(max_length=300, unique=True, blank=True)
 
     def keyword_list(self):

@@ -14,6 +14,7 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
+    max-width: 100%;
 }
 
 /* Navbar = 15% */
@@ -21,13 +22,13 @@ body {
     display: flex;
     align-items: center;
     justify-content: left;
-    background-color: #03120E;
-    padding: 0 20px;
+    background-color: #020887;
     flex: 0 0 12%;
     font-family: "Oswald", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
+    background-color: #0b1d51;
 }
 
 /* Links */
@@ -51,7 +52,21 @@ body {
 }
 
 
-/* Open button */
+
+.navbar-container {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+/* Make all sections flexible */
+.navbar-container > div {
+    flex: 1;
+}
+
+/* Left button */
 .openbtn {
     font-size: 20px;
     cursor: pointer;
@@ -60,19 +75,34 @@ body {
     color: white;
     padding: 0 20px;
 }
-.topnav .right {
-    margin-left: auto;
+
+/* Center home icon */
+.nav-center {
+    display: flex;
+    justify-content: left;
 }
 
-.topnav .search-container{
-    margin-left: auto;
+/* Center search */
+.search-container {
+    display: flex;
+    justify-content: center;
 }
+
+/* Right side */
+.dropdown {
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+
+
 
 
 /* Sidebar inside layout (NOT fixed) */
 .sidebar {
     width: 250px;
-    background-color: #0D2149;
+    background-color: #0b1d51;
     transition: 0.3s ease;
     padding-bottom: 20px;
     overflow: hidden;
@@ -131,7 +161,9 @@ body {
     margin: 10px;
     display: none;
 }
-
+.sidebar h3{
+    color: white;
+}
 
 
 
@@ -167,16 +199,12 @@ body {
     .topnav {
         flex: 0 0 auto;              /* stop % height issues */
         height: 60px;
-        padding: 0 10px;
+        padding: 0 0px;
     }
    .closebtn{
     display: flex;
    }
-    /* Hide center links (they cause crumpling) */
-    /* .topnav a {
-        display: none;
-    } */
-
+   
     /* Keep only important items */
     .topnav .right {
         display: block;
@@ -193,11 +221,11 @@ body {
         transition: 0.3s;
         
     }
-
+    
     .sidebar.open {
         left: 0;
     }
-
+    
     /* Body becomes full width */
     .body-area {
         flex-direction: column;
@@ -242,15 +270,6 @@ body {
     padding: 30px;
 }
 
-/* Blog card */
-/* .post-card {
-    background: #ffffff;
-    border-radius: 10px;
-    overflow: hidden;
-    margin-bottom: 25px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    transition: transform 0.2s ease;
-} */
 
 /* Post card container */
 .post-card {
@@ -440,9 +459,7 @@ a{
 a:link{
     color: #3b82f6;
 }
-a:visited{
-    color: #f07167;
-}
+
 a:hover{
     font-size: larger;
 }
@@ -452,7 +469,7 @@ a:hover{
 }
 
 .post-excerpt:visited{
-    color: #f07167;
+    color: #040404;
 
 }
 
@@ -514,11 +531,7 @@ a:hover{
 
 
 
-/* Container */
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
+
 
 /* Button */
 .dropbtn {
@@ -540,7 +553,8 @@ a:hover{
 }
 
 .dropbtn:hover {
-    font-size: larger;
+    color: black;
+    background-color: #fbf9f9;
 }
 
 /* Dropdown panel */
@@ -548,7 +562,7 @@ a:hover{
     position: absolute;
     right: 0;
     top: 110%;
-    background-color: #0f172a;
+    background-color: #fdfdff;
     min-width: 260px;
     border-radius: 10px;
     padding: 20px;
@@ -612,4 +626,77 @@ a:hover{
 
 .switch-link:hover {
     text-decoration: none;
+}
+
+
+.dropbtn {
+    background-color: #03120E;
+    color: white;
+    padding: 5px 5px;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100x;
+}
+
+/* Caret styling
+.caret {
+    display: inline-block;
+    transition: transform 0.3s ease;
+} */
+
+/* Rotate caret when dropdown is active */
+.dropdown-content.show + .dropbtn .caret,
+.dropbtn.active .caret {
+    transform: rotate(180deg);
+}
+
+/* Dropdown box */
+.dropdown-content {
+
+    position: absolute;
+    right: 0;
+    top: 50px;
+    background-color: #0f172a;
+    min-width: 260px;
+    padding: 10px;
+    border-radius: 8px;
+    display: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 1000;
+}
+/* .dropdown-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+} */
+.dropdown-content.show {
+    display: flex;
+}
+
+#loginForm,
+#signupForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+  color: white;
+}
+
+
+.footer-nav{
+
+    display:grid;
+    
 }

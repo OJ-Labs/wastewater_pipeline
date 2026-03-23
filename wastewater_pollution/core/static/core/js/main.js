@@ -110,3 +110,42 @@ function toggleForms(type) {
         signup.style.display = "none";
     }
 }
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const toggleBtn = document.getElementById("authToggle");
+    const dropdown = document.getElementById("dropdownContent");
+
+    toggleBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        dropdown.classList.toggle("show");
+        toggleBtn.classList.toggle("active"); // rotates the caret
+    });
+
+    // Close when clicking outside
+    document.addEventListener("click", () => {
+        dropdown.classList.remove("show");
+        toggleBtn.classList.remove("active");
+    });
+});
+
+
+
+function toggleForms(type) {
+    const loginForm = document.getElementById("loginForm");
+    const signupForm = document.getElementById("signupForm");
+
+    if (type === "signup") {
+        loginForm.style.display = "none";
+        signupForm.style.display = "flex";
+    } else {
+        signupForm.style.display = "none";
+        loginForm.style.display = "flex";
+    }
+}
+
+
+
+

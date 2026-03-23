@@ -1,105 +1,119 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}My Django Site{% endblock %}</title>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}NTNBO Nairobian{% endblock %}</title>
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;600&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-    <link rel="stylesheet" href="{% static 'core/styles.css' %}">
-</head>
-<body>
-<div class="app-container">
-    <nav class="topnav">
-        <div><button class="openbtn">&#9776;</button></div>
-        <div class="nav-center">
-            <a class="active" href="{% url 'core:home' %}"> <i class="fas fa-home icon"></i>
-            </a></a>
-        </div>
-        <div class="search-container">
-            <input type="text" placeholder="Search..">
-        </div>
+        <link rel="stylesheet" href="{% static 'core/styles.css' %}">
+    </head>
+    <body>
+        <div class="app-container">
+            <nav class="topnav">
+                <div class="navbar-container">
+                    <div><button class="openbtn">&#9776;</button></div>
+                    <div class="nav-center">
+                        <a class="active" href="{% url 'core:home' %}"><i class="fas fa-home icon"></i>
+                        </a></a>
+                    </div>
+                    <div class="search-container">
+                        <input type="text" placeholder="Search..">
+                    </div>
+                    <div class="dropdown" id="authDropdown">
+                        <button class="dropbtn" id="authToggle">
+                            <i class="fas fa-user"></i>
+                        </button>
+                        <div class="dropdown-content" id="dropdownContent">
+                            <!-- Login Form -->
+                            <div id="loginForm">
+                                <h3>Login</h3>
+                                <input type="text" placeholder="Username" required>
+                                <input type="password" placeholder="Password" required>
+                                <label class="remember-me">
+                                    <input type="checkbox" name="remember_me">
+                                    Remember me
+                                </label>
 
-    <div class="right">
-    <div class="dropdown" id="authDropdown">
-        <button class="dropbtn">Login / Signup</button>
-        <div class="dropdown-content" id="dropdownContent">
-            <!-- Login Form -->
-            <div id="loginForm">
-                <h3>Login</h3>
-                <input type="text" id="loginUsername" placeholder="Username" required>
-                <input type="password" id="loginPassword" placeholder="Password" required>
-                <button onclick="handleLogin()">Login</button>
-                <span class="switch-link" onclick="toggleForms('signup')">Don't have an account? Sign up</span>
+                                <div>
+                                    <button>Login</button>
+                                    <span class="switch-link" onclick="toggleForms('signup')">
+                                    Don't have an account? Sign up
+                                </span>
+                            </div>
+                            </div>
+                            <!-- Signup Form -->
+                            <div id="signupForm" style="display:none;">
+                                <h3>Sign Up</h3>
+                                <input type="text" placeholder="Username" required>
+                                <input type="email" placeholder="Email" required>
+                                <input type="password" placeholder="Password" required>
+                                <input type="password" placeholder="Reenter Password" required>
+                                <div>
+                                <button>Sign Up</button>
+                                <span class="switch-link" onclick="toggleForms('login')">
+                                    Already have an account? Login
+                                </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>      
+            </nav>
+
+            <div class="body-area">
+
+                <aside id="sidebar" class="sidebar">
+                    <button class="closebtn">×</button>
+                    <h3>Topics</h3>
+                    {% for topic in all_topics %}
+                        <a href="{% url 'core:posts_by_topic' topic.slug %}"
+                            class="{% if topic == current_topic %}active{% endif %}">
+                                {{ topic.name }}
+                            </a>
+                    {% endfor %}
+                </aside>
+                <main class="content">
+                        <!-- main content -->
+                    {% block content %}
+
+                    {% endblock %}
+                </main>
             </div>
 
-            <!-- Signup Form -->
-            <div id="signupForm" style="display:none;">
-                <h3>Sign Up</h3>
-                <input type="text" id="signupUsername" placeholder="Username" required>
-                <input type="email" id="signupEmail" placeholder="Email" required>
-                <input type="password" id="signupPassword" placeholder="Password" required>
-                <button onclick="handleSignup()">Sign Up</button>
-                <span class="switch-link" onclick="toggleForms('login')">Already have an account? Login</span>
-            </div>
-        </div>
-    </div>
-        </div>
-    </nav>
-
-    <div class="body-area">
-
-    <aside id="sidebar" class="sidebar">
-        <button class="closebtn">×</button>
-        <h3>Topics</h3>
-
-        {% for topic in all_topics %}
-            <a href="{% url 'core:posts_by_topic' topic.slug %}"
-            class="{% if topic == current_topic %}active{% endif %}">
-                {{ topic.name }}
-            </a>
-        {% endfor %}
-    </aside>
-    <main class="content">
-            <!-- main content -->
-            {% block content %}
-            
-            {% endblock %}
-
-        </main>
-
-    </div>
-
-<div id="overlay" class="overlay"></div>
-<script src="{% static 'core/js/main.js' %}"></script>
+            <div id="overlay" class="overlay"></div>
+            <script src="{% static 'core/js/main.js' %}"></script>
 
 
 
-<nav id="bottomNav" class="bottom-nav">
-    <a href="{% url 'core:home' %}">
-        <i class="fas fa-home"></i>
-    </a>
-    <a href="#">
-        <i class="fas fa-search"></i>
-    </a>
-    <a href="#">
-        <i class="fas fa-user"></i>
-    </a>
-    <a href="#">
-        <i class="fas fa-bars"></i>
-    </a>
-</nav>
+            <nav id="bottomNav" class="bottom-nav">
+                <a href="{% url 'core:home' %}">
+                    <i class="fas fa-home"></i>
+                </a>
+                <a href="#">
+                    <i class="fas fa-search"></i>
+                </a>
+                <a href="#">
+                    <i class="fas fa-user"></i>
+                </a>
+                <a href="#">
+                    <i class="fas fa-bars"></i>
+                </a>
+            </nav>
 
-<footer class="footer">
-    <a href="#">About Us</a>
-    <a href="#">Our Writers</a>
-    <a href="#">Contact Us</a>
-    <a href="#">Subscribe</a>
-    <a href="#">DMCA Removal</a>
-    <a href="#">Privacy Policy</a>
-    <a href="#">Cookie Policy</a>
-</footer>
-</body>
+            <footer class="footer">
+                    <div class="'footer-nav">
+                        <a href="#">About Us</a>
+                        <a href="#">Our Writers</a>
+                        <a href="#">Contact Us</a>
+                        <a href="#">Subscribe</a>
+                        <a href="#">DMCA Removal</a>
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Cookie Policy</a>
+                    </div>
+            </footer>
+        </div>    
+    </body>
 </html>
