@@ -507,17 +507,29 @@ a:hover{
 
 
 
-.footer {
+.footer{
+
+    display: grid;
+    padding: 20px;
+    background-color: #03120E;
+    grid-template-columns: auto auto auto;
+    height: fit-content;
+    gap: 10px;
+    font-weight: 400;
+}
+
+
+/* .footer {
     background: #03120E;
     color: #e2e8f0;
     padding: 20px;
     text-align: center;
-    display: flex;
+    display: grid;
     flex-wrap: wrap;
     justify-content: center;
     gap: 15px;
     height: fit-content;
-}
+} */
 
 .footer a {
     color: #cbd5e1;
@@ -695,8 +707,6 @@ a:hover{
 }
 
 
-.footer-nav{
-
-    display:grid;
-    
+#topic{
+padding-left: 10px;
 }

@@ -67,7 +67,7 @@
 
                 <aside id="sidebar" class="sidebar">
                     <button class="closebtn">×</button>
-                    <h3>Topics</h3>
+                    <div id="topic"><h3>Topics</h3></div>
                     {% for topic in all_topics %}
                         <a href="{% url 'core:posts_by_topic' topic.slug %}"
                             class="{% if topic == current_topic %}active{% endif %}">
@@ -104,16 +104,18 @@
             </nav>
 
             <footer class="footer">
-                    <div class="'footer-nav">
-                        <a href="#">About Us</a>
-                        <a href="#">Our Writers</a>
-                        <a href="#">Contact Us</a>
-                        <a href="#">Subscribe</a>
-                        <a href="#">DMCA Removal</a>
-                        <a href="#">Privacy Policy</a>
-                        <a href="#">Cookie Policy</a>
-                    </div>
+                        <div><a href="#">About Us</a></div>
+                        <div><a href="#">Our Writers</a></div>
+                        <div><a href="#">Become a Writer</a></div>
+                        <div><a href="#">Contact Us</a></div>
+                        <div><a href="#">Subscribe</a></div>
+                        <div><a href="#">DMCA Removal</a></div>
+                        <div><a href="#">Privacy Policy</a></div>
+                        <div><a href="#">Cookie Policy</a></div>
+                        <div><a href="#">Support Us</a></div>
             </footer>
         </div>    
     </body>
 </html>
+
+<div></div>
