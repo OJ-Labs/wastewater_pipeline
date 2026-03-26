@@ -5,7 +5,7 @@ html, body {
 
 body {
     margin: 0;
-   font-family: "Oswald", sans-serif;
+    font-family: "Oswald", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
 }
@@ -183,13 +183,22 @@ body {
     display: flex;
 }
 
-/* Main content fills rest */
 .content {
     flex: 1;
-    padding: 20px;
+    padding: 15px;
 }
+
+
+
+
 .nav-links {
     display: flex;
+}
+
+.rightbar {
+    width: 400px;
+    padding: 10px;
+    background-color: #ff9f1c;
 }
 
 /*   MOBILE (<= 768px) */
@@ -201,6 +210,13 @@ body {
         height: 60px;
         padding: 0 0px;
     }
+    .post-card{
+            border-radius: 0px !important;
+    }
+
+    .hero {
+        border-radius: 0px !important;}
+    
    .closebtn{
     display: flex;
    }
@@ -232,9 +248,7 @@ body {
     }
 
     /* Content spacing */
-    .content {
-        padding: 15px;
-    }
+   
     .nav-links {
         display: none;
         flex-direction: column;
@@ -245,7 +259,17 @@ body {
     .nav-links.active {
         display: flex;
     }
-    
+
+    .rightbar{
+        order: 2;
+        padding: 15px;
+        width:100%;
+        box-sizing: border-box;
+
+    }
+    .content{
+        padding: 0px;
+    }
 }
 
 .overlay {
@@ -263,12 +287,6 @@ body {
     display: block;
 }
 
-
-
-/* Container spacing */
-.content {
-    padding: 30px;
-}
 
 
 /* Post card container */
@@ -518,19 +536,6 @@ a:hover{
     font-weight: 400;
 }
 
-
-/* .footer {
-    background: #03120E;
-    color: #e2e8f0;
-    padding: 20px;
-    text-align: center;
-    display: grid;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-    height: fit-content;
-} */
-
 .footer a {
     color: #cbd5e1;
     text-decoration: none;
@@ -709,4 +714,7 @@ a:hover{
 
 #topic{
 padding-left: 10px;
+}
+h2{
+    margin-left: 5px;
 }

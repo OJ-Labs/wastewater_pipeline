@@ -18,7 +18,6 @@ def home(request):
     })
 
 
-
 def posts_by_topic(request, slug):
     topic = get_object_or_404(Topic, slug=slug)
     posts = BlogPost.objects.filter(topic=topic)
@@ -27,8 +26,6 @@ def posts_by_topic(request, slug):
         'posts': posts,
         'current_topic': topic
     })
-
-
 
 def post_detail(request, slug):
     post = get_object_or_404(BlogPost, slug=slug)

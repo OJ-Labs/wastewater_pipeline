@@ -13,12 +13,10 @@
                 {% if post.illustration %}
                     <img src="{{ post.illustration.url }}" class="post-image">
                 {% endif %}
-
                 <p class="meta">
                     By {{ post.author.username }} • 
                     {{ post.created_at|date:"M d, Y" }}
                 </p>
-
                 <p class="post-excerpt">
                     {{ post.content_html|truncatewords:25 }}
                 </p>
