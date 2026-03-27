@@ -20,9 +20,7 @@ body {
 /* Navbar = 15% */
 .topnav {
     display: flex;
-    align-items: center;
     justify-content: left;
-    background-color: #020887;
     flex: 0 0 12%;
     font-family: "Oswald", sans-serif;
     font-optical-sizing: auto;
@@ -54,47 +52,56 @@ body {
 
 
 .navbar-container {
-    width: 100vw;
+    width: 100%;
     display: flex;
-    align-items: center;
-    max-width: 100%;
     overflow: hidden;
+    background-color: #0b1d51;
+    align-items: stretch;
 }
 
 /* Make all sections flexible */
 .navbar-container > div {
     flex: 1;
+    display: flex;
+    align-items: center;
 }
 
 /* Left button */
-.openbtn {
-    font-size: 20px;
+.openbutton {
+    font-size:  20px;
     cursor: pointer;
-    background: none;
     border: none;
     color: white;
-    padding: 0 20px;
+    padding: 0 15px;
+    display: flex;
 }
+
+
+
 
 /* Center home icon */
 .nav-center {
     display: flex;
-    justify-content: left;
+    justify-content:flex-start;
 }
 
 /* Center search */
 .search-container {
     display: flex;
-    justify-content: center;
-}
+    }
 
 /* Right side */
 .dropdown {
     display: flex;
     justify-content: flex-end;
-
+    padding-right: 15px;
 }
 
+.topnav input[type=text] {
+  font-size: 17px;
+  border-radius: 10px;
+  width: 100%;
+}
 
 
 
@@ -167,16 +174,6 @@ body {
 
 
 
-.topnav input[type=text] {
-  float: right;
-  padding: 6px;
-  border: none;
-  margin-top: 8px;
-  margin-right: 16px;
-  font-size: 17px;
-  border-radius: 25;
-}
-
 /* Body area (sidebar + main) */
 .body-area {
     flex: 1;
@@ -207,7 +204,7 @@ body {
     /* Navbar adjustments */
     .topnav {
         flex: 0 0 auto;              /* stop % height issues */
-        height: 60px;
+        height: 80px;
         padding: 0 0px;
     }
     .post-card{
@@ -270,7 +267,30 @@ body {
     .content{
         padding: 0px;
     }
+    .navbar-container > div {
+    flex: 0 0 auto; /* stop equal distribution */
+  }
+
+  .openbutton {
+    flex: 0 0 50px;
+  }
+
+  .nav-center {
+    flex: 0 0 50px;
+  }
+
+  .dropdown {
+    flex: 0 0 50px;
+    margin-left: 20px;
+    padding-left: 5px;
+} 
+    
 }
+
+
+
+
+
 
 .overlay {
     position: fixed;
