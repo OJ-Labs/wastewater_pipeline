@@ -40,8 +40,12 @@ class RawArticle(models.Model):
     hash = models.CharField(max_length=64, unique=True)
     published_at = models.DateTimeField(null=True)
     scraped_at = models.DateTimeField(auto_now_add=True)
+    publish_date=models.DateField(null=True,blank=True)
     source = models.CharField(max_length=500, null=True)
-
+    image = models.ImageField(upload_to="raw_articles/",
+                                     blank=True, 
+                                     null=True,
+                                     default='core/default.jpg')
 
 
     def __str__(self):
@@ -108,3 +112,10 @@ class BlogPost(models.Model):
             self.slug = slug
 
         super().save(*args, **kwargs)
+
+
+
+class Today_in_history(models.Model):
+    title=models.TextField()
+    content=models.TextField()
+    image=models.ImageField()

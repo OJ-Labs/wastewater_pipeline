@@ -8,7 +8,7 @@ from .models import RawArticle, BlogPost, Topic,Profile
 @admin.register(RawArticle)
 class RawArticleAdmin(SummernoteModelAdmin):
     summernote_fields='__all__'
-    list_display = ['title', 'author', 'published_at', 'scraped_at', 'topic']
+    list_display = ['title', 'author', 'published_at', 'scraped_at', 'topic', 'publish_date', 'source']
     search_fields = ['title', 'author', 'topic']
     readonly_fields = ['scraped_at']
     list_filter = ['published_at']
@@ -28,6 +28,7 @@ class BlogPostAdmin(SummernoteModelAdmin):
 @admin.register(Topic)
 class TopicAdmin(SummernoteModelAdmin):
     list_display=['name', 'keywords', 'feeds']
+    search_fields = ['title', 'content']
     summernote_fields='__all__'
 
 
